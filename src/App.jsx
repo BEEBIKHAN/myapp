@@ -1,5 +1,5 @@
 
-import React, { useState,} from 'react';
+import React, { useState,  useEffect} from 'react';
 import PokemonCard from './components/PokemonCard'
 import NavBar from './components/NavBar';
 const pokemonList = [
@@ -24,7 +24,7 @@ const pokemonList = [
    },];
    function App() {
    const [pokemonIndex, setPokemonIndex] = useState(0);    
-   //const [selectedPokemonName, setSelectedPokemonName] = useState(pokemonList[0].name);    
+   const [selectedPokemonName, setSelectedPokemonName] = useState(pokemonList[0].name);    
 
    const PreviousClick = () => {
      if (pokemonIndex > 0) {
@@ -41,6 +41,23 @@ const pokemonList = [
    const selectedPokemon = pokemonList[pokemonIndex];
    const isFirstPokemon = pokemonIndex === 0;
    const isLastPokemon = pokemonIndex === pokemonList.length - 1;
+
+   
+  useEffect(() => {
+    if (selectedPokemon && selectedPokemon.name) {
+      setSelectedPokemonName(selectedPokemon.name);
+    }
+  }, [selectedPokemon]);
+
+  useEffect(() => {
+    alert("Hello Pokemon Trainer :)");
+  }, []);
+
+  useEffect(() => {
+    if (selectedPokemonName === "pikachu") {
+      alert("Pika Pikachu!!!");
+    }
+  }, [selectedPokemonName]);
 
    return (
      <div>
