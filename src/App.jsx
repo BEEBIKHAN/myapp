@@ -24,35 +24,17 @@ const pokemonList = [
    },];
    function App() {
    const [pokemonIndex, setPokemonIndex] = useState(0);    
-   //const [selectedPokemonName, setSelectedPokemonName] = useState(pokemonList[0].name);    
-
-   const PreviousClick = () => {
-     if (pokemonIndex > 0) {
-       setPokemonIndex(pokemonIndex - 1);
-     }
-   };
- 
-   const NextClick = () => {
-     if (pokemonIndex < pokemonList.length - 1) {
-       setPokemonIndex(pokemonIndex + 1);
-     }
-   };
- 
-   const selectedPokemon = pokemonList[pokemonIndex];
-   const isFirstPokemon = pokemonIndex === 0;
-   const isLastPokemon = pokemonIndex === pokemonList.length - 1;
-
-   return (
-     <div>
-       <PokemonCard pokemon={selectedPokemon} />
-       <NavBar
-        onPreviousClick={PreviousClick}
-        onNextClick={NextClick}
-        isFirst={isFirstPokemon}
-        isLast={isLastPokemon}
+   return  (
+     
+   <div>
+      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      <NavBar
+        pokemonList={pokemonList}
+        selectedPokemonIndex={pokemonIndex}
+        onPokemonClick={setPokemonIndex}
       />
-     </div>
-   );
+    </div>
+  );
  }
 export default App
                                       
